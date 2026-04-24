@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Althaf — Graphic Designer</title>
+  <meta name="description" content="Althaf is a passionate Graphic Designer specializing in visual storytelling, poster design, branding, and digital content creation."/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css"/>
+  <style>
+    .ph { display:inline-flex; align-items:center; justify-content:center; }
+    .skill-icon .ph, .card-icon .ph, .c-icon .ph, .tool-pill .ph { font-size:1.3rem; }
+    .project-img .ph { font-size:4rem; color:#fff; opacity:0.9; position:relative; z-index:1; }
+    .social-btn .ph { font-size:1.15rem; }
+    .btn-send .ph { font-size:1rem; margin-right:0.4rem; }
+    footer .ph-heart-fill { color:var(--secondary); font-size:0.9rem; vertical-align:middle; }
+  </style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-logo">Althaf.SK</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right" style="display:flex; align-items:center; gap:1.2rem;">
+    <a href="#contact" class="nav-cta">Hire Me</a>
+    
+    <div class="theme-switcher">
+      <button class="ts-toggle" id="ts-toggle" title="Theme Settings"><i class="ph ph-gear"></i></button>
+      <div class="ts-panel" id="ts-panel">
+        <div class="ts-section">
+          <span class="ts-label">Dark Mode</span>
+          <button class="ts-mode-btn" id="mode-btn"><i class="ph ph-moon"></i></button>
+        </div>
+        <div class="ts-section" style="margin-top:0.5rem">
+          <span class="ts-label">Color</span>
+          <div class="ts-colors">
+            <button class="ts-color" data-color="purple" style="background:#8b5cf6"></button>
+            <button class="ts-color" data-color="yellow" style="background:#eab308"></button>
+            <button class="ts-color" data-color="green" style="background:#10b981"></button>
+            <button class="ts-color active" data-color="orange" style="background:#f97316"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-right"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge anim-stagger anim-1"><span></span> Available for Freelance</div>
+      <h1 class="hero-title anim-stagger anim-2">
+        Hi, I'm <span class="name">Althaf</span><br>
+        Creative Designer
+      </h1>
+      <p class="hero-role anim-stagger anim-3">I craft <span class="typed" id="typed"></span></p>
+      <p class="hero-desc anim-stagger anim-4">Passionate Graphic Designer blending creativity with technical knowledge to create eye-catching visuals that communicate and connect with people.</p>
+      <div class="hero-btns anim-stagger anim-5">
+        <a href="#projects" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-outline">Let's Talk →</a>
+      </div>
+      <div class="hero-stats anim-stagger anim-6">
+        <div class="stat-item"><div class="stat-number">15+</div><div class="stat-label">Projects Done</div></div>
+        <div class="stat-item"><div class="stat-number">3+</div><div class="stat-label">Years of Passion</div></div>
+        <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Creative Drive</div></div>
+      </div>
+    </div>
+    <div class="hero-visual anim-stagger anim-7">
+      <div class="photo-ring">
+        <div class="photo-orbit"><div class="orbit-dot"></div></div>
+        <div class="photo-inner">
+          <img src="assets/imgs/profile.jpg" alt="Althaf" onerror="this.style.display='none';document.getElementById('initials').style.display='flex'"/>
+          <div class="photo-initials" id="initials" style="display:none">A</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="fade-up">
+    <div class="section-tag">// about me</div>
+    <h2 class="section-title">The Mind Behind <span>the Design</span></h2>
+  </div>
+  <div class="about-grid" style="margin-top:3rem">
+    <div class="about-text fade-up">
+      <p>I'm <strong style="color:var(--text)">Althaf</strong>, a passionate and creative Graphic Designer with a strong interest in visual storytelling and digital design. I specialize in creating eye-catching posters, banners, and social media designs that communicate ideas clearly and effectively.</p>
+      <p>With a background in Computer Science and skills in tools like Photoshop, Illustrator, and web technologies, I blend creativity with technical knowledge to deliver modern and impactful designs.</p>
+      <p>I enjoy experimenting with colors, typography, and layouts to bring unique concepts to life. My goal is to create designs that not only look good but also connect with people.</p>
+      <div class="about-tags">
+        <span class="tag">Visual Storytelling</span>
+        <span class="tag">Typography</span>
+        <span class="tag">Color Theory</span>
+        <span class="tag">Layout Design</span>
+        <span class="tag">Branding</span>
+        <span class="tag">Digital Art</span>
+      </div>
+    </div>
+    <div class="about-cards fade-up">
+      <div class="about-card">
+        <div class="card-icon"><i class="ph ph-graduation-cap"></i></div>
+        <div>
+          <div class="card-label">Education</div>
+          <div class="card-value">Bachelor's in Computer Science</div>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="card-icon"><i class="ph ph-palette"></i></div>
+        <div>
+          <div class="card-label">Specialization</div>
+          <div class="card-value">Graphic Design & Visual Arts</div>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="card-icon"><i class="ph ph-lightbulb"></i></div>
+        <div>
+          <div class="card-label">Focus Areas</div>
+          <div class="card-value">Posters, Banners, Social Media</div>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="card-icon"><i class="ph ph-globe-hemisphere-west"></i></div>
+        <div>
+          <div class="card-label">Availability</div>
+          <div class="card-value">Open to Freelance & Collaborations</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="background:var(--bg)">
+  <div class="fade-up">
+    <div class="section-tag">// skills</div>
+    <h2 class="section-title">What I <span>Do Best</span></h2>
+    <p class="section-desc">A blend of creative talent and technical expertise, sharpened through continuous practice and real-world projects.</p>
+  </div>
+  <div class="skills-grid" id="skills-grid">
+    <div class="skill-card fade-up">
+      <div class="skill-header">
+        <div class="skill-name"><span class="skill-icon"><i class="ph ph-image"></i></span> Adobe Photoshop</div>
+        <span class="skill-pct">92%</span>
+      </div>
+      <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
+    </div>
+    <div class="skill-card fade-up">
+      <div class="skill-header">
+        <div class="skill-name"><span class="skill-icon"><i class="ph ph-pen-nib"></i></span> Adobe Illustrator</div>
+        <span class="skill-pct">88%</span>
+      </div>
+      <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+    </div>
+    <div class="skill-card fade-up">
+      <div class="skill-header">
+        <div class="skill-name"><span class="skill-icon"><i class="ph ph-swatches"></i></span> Color Theory</div>
+        <span class="skill-pct">95%</span>
+      </div>
+      <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+    </div>
+    <div class="skill-card fade-up">
+      <div class="skill-header">
+        <div class="skill-name"><span class="skill-icon"><i class="ph ph-text-aa"></i></span> Typography</div>
+        <span class="skill-pct">90%</span>
+      </div>
+      <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+    </div>
+    <div class="skill-card fade-up">
+      <div class="skill-header">
+        <div class="skill-name"><span class="skill-icon"><i class="ph ph-squares-four"></i></span> Layout &amp; Composition</div>
+        <span class="skill-pct">87%</span>
+      </div>
+      <div class="skill-bar"><div class="skill-fill" data-width="87"></div></div>
+    </div>
+    <div class="skill-card fade-up">
+      <div class="skill-header">
+        <div class="skill-name"><span class="skill-icon"><i class="ph ph-code"></i></span> Web Design (HTML/CSS)</div>
+        <span class="skill-pct">80%</span>
+      </div>
+      <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+    </div>
+    <div class="skill-card fade-up">
+      <div class="skill-header">
+        <div class="skill-name"><span class="skill-icon"><i class="ph ph-device-mobile"></i></span> Social Media Design</div>
+        <span class="skill-pct">93%</span>
+      </div>
+      <div class="skill-bar"><div class="skill-fill" data-width="93"></div></div>
+    </div>
+    <div class="skill-card fade-up">
+      <div class="skill-header">
+        <div class="skill-name"><span class="skill-icon"><i class="ph ph-paint-brush"></i></span> Brand Identity</div>
+        <span class="skill-pct">82%</span>
+      </div>
+      <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="fade-up">
+    <div class="section-tag">// projects</div>
+    <h2 class="section-title">Featured <span>Works</span></h2>
+    <p class="section-desc">A selection of design projects where creativity met purpose — each one crafted with care and intent.</p>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card fade-up">
+      <div class="project-img" style="background:linear-gradient(135deg,#1a0533,#3b0764)"><i class="ph ph-confetti"></i></div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag design">Design</span>
+          <span class="project-tag branding">Branding</span>
+        </div>
+        <div class="project-name">College Fest Event Banners</div>
+        <p class="project-desc">A full suite of event posters and banners for a college cultural fest — combining vibrant gradients, bold typography, and dynamic layouts for maximum visual impact.</p>
+      </div>
+    </div>
+    <div class="project-card fade-up">
+      <div class="project-img" style="background:linear-gradient(135deg,#0c1a4d,#1e3a8a)"><i class="ph ph-megaphone-simple"></i></div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag social">Social Media</span>
+          <span class="project-tag design">Design</span>
+        </div>
+        <div class="project-name">Social Media Campaign Kit</div>
+        <p class="project-desc">A cohesive social media design package for brand promotions — including Instagram posts, stories, and Facebook banners with consistent brand language.</p>
+      </div>
+    </div>
+    <div class="project-card fade-up">
+      <div class="project-img" style="background:linear-gradient(135deg,#1a0a2e,#4c1d95)"><i class="ph ph-shopping-bag"></i></div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag branding">Branding</span>
+          <span class="project-tag design">Design</span>
+        </div>
+        <div class="project-name">Product Launch Poster Series</div>
+        <p class="project-desc">A series of promotional posters for a product launch, focusing on aesthetic appeal, clear messaging, and user engagement through smart visual hierarchy.</p>
+      </div>
+    </div>
+    <div class="project-card fade-up">
+      <div class="project-img" style="background:linear-gradient(135deg,#0a2a1a,#14532d)"><i class="ph ph-leaf"></i></div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag social">Social Media</span>
+          <span class="project-tag branding">Branding</span>
+        </div>
+        <div class="project-name">Digital Content Designs</div>
+        <p class="project-desc">Creative digital content pieces for various clients — merging storytelling visuals with brand identity to produce thumb-stopping digital artwork.</p>
+      </div>
+    </div>
+    <div class="project-card fade-up">
+      <div class="project-img" style="background:linear-gradient(135deg,#1e1a00,#713f12)"><i class="ph ph-sparkle"></i></div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag design">Design</span>
+        </div>
+        <div class="project-name">Typography Poster Collection</div>
+        <p class="project-desc">Experimental typography-based posters exploring different typefaces, spacing, and color combinations to create visually rich compositions.</p>
+      </div>
+    </div>
+    <div class="project-card fade-up">
+      <div class="project-img" style="background:linear-gradient(135deg,#1a0a20,#86198f)"><i class="ph ph-diamond"></i></div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag branding">Branding</span>
+          <span class="project-tag design">Design</span>
+        </div>
+        <div class="project-name">Brand Identity Package</div>
+        <p class="project-desc">Complete brand identity design including logo concepts, color palette, typography guidelines, and branded materials for a startup client.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools" style="background:var(--bg);text-align:center">
+  <div class="fade-up">
+    <div class="section-tag">// tools & tech</div>
+    <h2 class="section-title">My <span>Creative Arsenal</span></h2>
+    <p class="section-desc" style="margin:0 auto">The tools I wield daily to turn ideas into stunning visual realities.</p>
+  </div>
+  <div class="tools-row">
+    <div class="tool-pill fade-up"><i class="ph ph-image"></i> Adobe Photoshop</div>
+    <div class="tool-pill fade-up"><i class="ph ph-pen-nib"></i> Adobe Illustrator</div>
+    <div class="tool-pill fade-up"><i class="ph ph-film-strip"></i> Adobe Premiere</div>
+    <div class="tool-pill fade-up"><i class="ph ph-figma-logo"></i> Figma</div>
+    <div class="tool-pill fade-up"><i class="ph ph-brackets-angle"></i> HTML &amp; CSS</div>
+    <div class="tool-pill fade-up"><i class="ph ph-brackets-curly"></i> JavaScript</div>
+    <div class="tool-pill fade-up"><i class="ph ph-paint-bucket"></i> Canva Pro</div>
+    <div class="tool-pill fade-up"><i class="ph ph-pencil-simple"></i> Procreate</div>
+    <div class="tool-pill fade-up"><i class="ph ph-newspaper"></i> Adobe InDesign</div>
+    <div class="tool-pill fade-up"><i class="ph ph-cube"></i> Blender</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="about" id="contact">
+  <div class="fade-up">
+    <div class="section-tag">// contact</div>
+    <h2 class="section-title">Let's <span>Work Together</span></h2>
+    <p class="section-desc">Have a project in mind? I'd love to hear about it. Drop me a message and let's create something amazing.</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info fade-up">
+      <div class="contact-item">
+        <div class="c-icon"><i class="ph ph-envelope-simple"></i></div>
+        <div><div class="c-label">Email</div><div class="c-value">althaf@gmail.com</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="c-icon"><i class="ph ph-map-pin"></i></div>
+        <div><div class="c-label">Location</div><div class="c-value">India</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="c-icon"><i class="ph ph-lightning"></i></div>
+        <div><div class="c-label">Response Time</div><div class="c-value">Within 24 hours</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="c-icon"><i class="ph ph-briefcase"></i></div>
+        <div><div class="c-label">Status</div><div class="c-value" style="color:#4ade80">✓ Available for Work</div></div>
+      </div>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/shaik-althaf-50b68b318/" target="_blank" class="social-btn" title="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+        <a href="https://www.instagram.com/althaf__942/" target="_blank" class="social-btn" title="Instagram"><i class="ph ph-instagram-logo"></i></a>
+        <a href="https://github.com/Althaf-1717" target="_blank" class="social-btn" title="GitHub"><i class="ph ph-github-logo"></i></a>
+      </div>
+    </div>
+    <form action="https://formsubmit.co/althafshaik1717@gmail.com" method="POST" class="contact-form fade-up" id="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="First Name" placeholder="John" required/>
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" name="Last Name" placeholder="Doe" required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="john@example.com" required/>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="_subject" placeholder="Project inquiry..." required/>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+      </div>
+      <button type="submit" class="btn-send" id="send-btn"><i class="ph ph-paper-plane-tilt"></i> Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Designed &amp; Built with <i class="ph-fill ph-heart-fill" style="color:#ec4899;vertical-align:middle"></i> by <span>Althaf</span> · Graphic Designer © 2025</p>
+</footer>
+
+<script>
+  // CURSOR
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  let mx=0, my=0, rx=0, ry=0;
+  document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cursor.style.left=mx-6+'px'; cursor.style.top=my-6+'px'; });
+  function animateRing(){rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12; ring.style.left=rx-18+'px'; ring.style.top=ry-18+'px'; requestAnimationFrame(animateRing);}
+  animateRing();
+  document.querySelectorAll('a,button,.project-card,.about-card,.tool-pill').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cursor.style.transform='scale(2)';ring.style.transform='scale(1.5)';ring.style.borderColor='rgba(139,92,246,0.8)';});
+    el.addEventListener('mouseleave',()=>{cursor.style.transform='scale(1)';ring.style.transform='scale(1)';ring.style.borderColor='rgba(139,92,246,0.5)';});
+  });
+
+  // NAVBAR SCROLL
+  window.addEventListener('scroll',()=>{
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY>50);
+  });
+
+  // TYPED TEXT
+  const phrases = ['Stunning Posters.','Brand Identities.','Social Media Magic.','Visual Stories.','Eye-Catching Banners.'];
+  let pi=0,ci=0,deleting=false;
+  const typed=document.getElementById('typed');
+  function typeLoop(){
+    const phrase=phrases[pi];
+    if(!deleting){
+      typed.textContent=phrase.slice(0,++ci);
+      if(ci===phrase.length){deleting=true;setTimeout(typeLoop,1800);return;}
+    } else {
+      typed.textContent=phrase.slice(0,--ci);
+      if(ci===0){deleting=false;pi=(pi+1)%phrases.length;}
+    }
+    setTimeout(typeLoop, deleting?50:80);
+  }
+  typeLoop();
+
+  // SCROLL ANIMATIONS
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        // Animate skill bars
+        e.target.querySelectorAll('.skill-fill').forEach(bar=>{
+          bar.style.width=bar.dataset.width+'%';
+        });
+      }
+    });
+  }, {threshold:0.15});
+  document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+
+  // Also observe skill cards specifically for bars
+  document.querySelectorAll('.skill-card').forEach(card=>{
+    const skillObserver = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.querySelector('.skill-fill').style.width=e.target.querySelector('.skill-fill').dataset.width+'%';
+        }
+      });
+    },{threshold:0.3});
+    skillObserver.observe(card);
+  });
+
+  // CONTACT FORM
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('send-btn');
+    btn.innerHTML = '<i class="ph ph-spinner ph-spin"></i> Sending...';
+    btn.style.pointerEvents = 'none';
+
+    fetch("https://formsubmit.co/ajax/althafshaik1717@gmail.com", {
+      method: "POST",
+      headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+          name: document.getElementById('fname').value + ' ' + document.getElementById('lname').value,
+          email: document.getElementById('email').value,
+          subject: document.getElementById('subject').value,
+          message: document.getElementById('message').value
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      btn.innerHTML = '<i class="ph ph-check-circle"></i> Message Sent!';
+      btn.style.background = 'linear-gradient(135deg, #059669, #10b981)';
+      setTimeout(() => {
+        btn.innerHTML = '<i class="ph ph-paper-plane-tilt"></i> Send Message';
+        btn.style.background = '';
+        btn.style.pointerEvents = 'auto';
+      }, 3000);
+      this.reset();
+    })
+    .catch(error => {
+      btn.innerHTML = '<i class="ph ph-warning"></i> Error Sending';
+      btn.style.background = '#ef4444';
+      setTimeout(() => {
+        btn.innerHTML = '<i class="ph ph-paper-plane-tilt"></i> Try Again';
+        btn.style.background = '';
+        btn.style.pointerEvents = 'auto';
+      }, 3000);
+    });
+  });
+
+  // THEME SWITCHER
+  const tsToggle = document.getElementById('ts-toggle');
+  const tsPanel = document.getElementById('ts-panel');
+  const modeBtn = document.getElementById('mode-btn');
+  const tsColors = document.querySelectorAll('.ts-color');
+  const htmlEl = document.documentElement;
+
+  tsToggle.addEventListener('click', () => tsPanel.classList.toggle('active'));
+  document.addEventListener('click', (e) => {
+    if(!tsToggle.contains(e.target) && !tsPanel.contains(e.target)) tsPanel.classList.remove('active');
+  });
+
+  modeBtn.addEventListener('click', () => {
+    if (htmlEl.getAttribute('data-theme') === 'dark') {
+      htmlEl.removeAttribute('data-theme');
+      modeBtn.innerHTML = '<i class="ph ph-moon"></i>';
+      localStorage.setItem('theme', 'light');
+    } else {
+      htmlEl.setAttribute('data-theme', 'dark');
+      modeBtn.innerHTML = '<i class="ph ph-sun"></i>';
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+
+  tsColors.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tsColors.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const color = btn.getAttribute('data-color');
+      if (color === 'orange') {
+        htmlEl.removeAttribute('data-color');
+      } else {
+        htmlEl.setAttribute('data-color', color);
+      }
+      localStorage.setItem('color', color);
+    });
+  });
+
+  // Load preferences
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    htmlEl.setAttribute('data-theme', 'dark');
+    modeBtn.innerHTML = '<i class="ph ph-sun"></i>';
+  }
+  const savedColor = localStorage.getItem('color');
+  if (savedColor && savedColor !== 'orange') {
+    htmlEl.setAttribute('data-color', savedColor);
+    tsColors.forEach(b => {
+      b.classList.remove('active');
+      if (b.getAttribute('data-color') === savedColor) b.classList.add('active');
+    });
+  }
+</script>
+</body>
+</html>
