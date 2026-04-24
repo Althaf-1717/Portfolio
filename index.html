@@ -437,47 +437,7 @@
     skillObserver.observe(card);
   });
 
-  // CONTACT FORM
-  document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('send-btn');
-    btn.innerHTML = '<i class="ph ph-spinner ph-spin"></i> Sending...';
-    btn.style.pointerEvents = 'none';
 
-    fetch("https://formsubmit.co/ajax/althafshaik1717@gmail.com", {
-      method: "POST",
-      headers: { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-          name: document.getElementById('fname').value + ' ' + document.getElementById('lname').value,
-          email: document.getElementById('email').value,
-          subject: document.getElementById('subject').value,
-          message: document.getElementById('message').value
-      })
-    })
-    .then(response => response.json())
-    .then(data => {
-      btn.innerHTML = '<i class="ph ph-check-circle"></i> Message Sent!';
-      btn.style.background = 'linear-gradient(135deg, #059669, #10b981)';
-      setTimeout(() => {
-        btn.innerHTML = '<i class="ph ph-paper-plane-tilt"></i> Send Message';
-        btn.style.background = '';
-        btn.style.pointerEvents = 'auto';
-      }, 3000);
-      this.reset();
-    })
-    .catch(error => {
-      btn.innerHTML = '<i class="ph ph-warning"></i> Error Sending';
-      btn.style.background = '#ef4444';
-      setTimeout(() => {
-        btn.innerHTML = '<i class="ph ph-paper-plane-tilt"></i> Try Again';
-        btn.style.background = '';
-        btn.style.pointerEvents = 'auto';
-      }, 3000);
-    });
-  });
 
   // THEME SWITCHER
   const tsToggle = document.getElementById('ts-toggle');
