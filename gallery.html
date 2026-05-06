@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SyncGaze Projects — Althaf's Portfolio</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css"/>
+  <style>
+    .ph { display:inline-flex; align-items:center; justify-content:center; }
+
+    /* GALLERY HEADER */
+    .g-header {
+      padding: 8rem 6% 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg2);
+    }
+    .g-header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(var(--primary-rgb),0.1) 0%, transparent 70%);
+      z-index: 0;
+    }
+    .g-back {
+      position: absolute; top: 6rem; left: 6%;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      color: var(--muted); text-decoration: none;
+      font-size: 0.9rem; font-weight: 500;
+      border: 1px solid var(--border);
+      padding: 0.5rem 1.1rem; border-radius: 50px;
+      background: var(--card); backdrop-filter: blur(10px);
+      transition: all 0.3s; z-index: 1; cursor: none;
+    }
+    .g-back:hover { color: var(--primary); border-color: var(--primary); background: rgba(var(--primary-rgb),0.1); }
+
+    .g-tag {
+      position: relative; z-index: 1;
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--primary); margin-bottom: 1rem;
+    }
+    .g-title {
+      position: relative; z-index: 1;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800; line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .g-title span { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .g-desc {
+      position: relative; z-index: 1;
+      color: var(--muted); font-size: 1rem; line-height: 1.8;
+      max-width: 560px; margin: 0 auto 1rem;
+    }
+    .g-count {
+      position: relative; z-index: 1;
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      background: rgba(var(--primary-rgb),0.12);
+      border: 1px solid rgba(var(--primary-rgb),0.3);
+      border-radius: 50px; font-size: 0.8rem;
+      color: var(--primary); font-weight: 600;
+    }
+
+    /* GRID */
+    .g-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.8rem;
+      padding: 3rem 6% 6rem;
+      background: var(--bg);
+    }
+
+    /* CARD */
+    .g-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px; overflow: hidden;
+      cursor: none;
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), border-color 0.3s, box-shadow 0.3s;
+      opacity: 0; transform: translateY(40px);
+      animation: cardIn 0.6s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    .g-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      border-color: rgba(var(--primary-rgb),0.5);
+      box-shadow: 0 24px 60px rgba(var(--primary-rgb),0.2);
+    }
+    @keyframes cardIn { to { opacity: 1; transform: translateY(0); } }
+    .g-card:nth-child(1){animation-delay:0.05s} .g-card:nth-child(2){animation-delay:0.1s}
+    .g-card:nth-child(3){animation-delay:0.15s} .g-card:nth-child(4){animation-delay:0.2s}
+    .g-card:nth-child(5){animation-delay:0.25s} .g-card:nth-child(6){animation-delay:0.3s}
+    .g-card:nth-child(7){animation-delay:0.35s} .g-card:nth-child(8){animation-delay:0.4s}
+    .g-card:nth-child(9){animation-delay:0.45s}
+
+    .g-img-wrap { position: relative; overflow: hidden; height: 220px; }
+    .g-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .g-card:hover .g-img-wrap img { transform: scale(1.07); }
+    .g-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.7) 100%);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .g-card:hover .g-img-overlay { opacity: 1; }
+    .g-zoom-icon {
+      width: 52px; height: 52px;
+      background: rgba(var(--primary-rgb),0.9);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; color: #fff;
+      transform: scale(0.7); transition: transform 0.3s;
+    }
+    .g-card:hover .g-zoom-icon { transform: scale(1); }
+
+    .g-body { padding: 1.4rem; }
+    .g-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: rgba(var(--primary-rgb),0.12);
+      border: 1px solid rgba(var(--primary-rgb),0.3);
+      border-radius: 50px; font-size: 0.7rem;
+      color: var(--primary); font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      margin-bottom: 0.7rem;
+    }
+    .g-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem; font-weight: 700;
+      margin-bottom: 0.5rem; line-height: 1.3; color: var(--text);
+    }
+    .g-para { color: var(--muted); font-size: 0.85rem; line-height: 1.65; }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,0.92);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+      backdrop-filter: blur(16px);
+    }
+    .lightbox.active { opacity: 1; pointer-events: auto; }
+    .lb-inner {
+      position: relative; max-width: 90vw; max-height: 90vh;
+      display: flex; flex-direction: column; align-items: center; gap: 1rem;
+    }
+    .lb-img {
+      max-width: 100%; max-height: 80vh;
+      border-radius: 16px; box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+      transform: scale(0.85);
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .lightbox.active .lb-img { transform: scale(1); }
+    .lb-close {
+      position: absolute; top: -50px; right: 0;
+      width: 42px; height: 42px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50%; color: #fff; font-size: 1.2rem; cursor: none;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .lb-close:hover { background: rgba(239,68,68,0.6); }
+    .lb-caption { color: var(--muted); font-size: 0.85rem; text-align: center; }
+    .lb-nav { display: flex; gap: 1rem; margin-top: 0.5rem; }
+    .lb-nav button {
+      padding: 0.5rem 1.4rem;
+      background: rgba(var(--primary-rgb),0.15);
+      border: 1px solid rgba(var(--primary-rgb),0.4);
+      border-radius: 50px; color: var(--primary);
+      font-size: 0.85rem; font-weight: 600; cursor: none; transition: all 0.2s;
+    }
+    .lb-nav button:hover { background: rgba(var(--primary-rgb),0.35); }
+
+    @media (max-width: 600px) {
+      .g-grid { grid-template-columns: 1fr; padding: 1.5rem 5% 4rem; }
+      .g-back { font-size: 0.8rem; padding: 0.4rem 0.9rem; top: 5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- CURSOR (same as main portfolio) -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- NAVBAR (same as main portfolio) -->
+<nav id="navbar">
+  <div class="nav-logo">Althaf.SK</div>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#skills">Skills</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="index.html#tools">Tools</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right" style="display:flex; align-items:center; gap:1.2rem;">
+    <a href="index.html#contact" class="nav-cta">Hire Me</a>
+    <div class="theme-switcher">
+      <button class="ts-toggle" id="ts-toggle" title="Theme Settings"><i class="ph ph-gear"></i></button>
+      <div class="ts-panel" id="ts-panel">
+        <div class="ts-section">
+          <span class="ts-label">Dark Mode</span>
+          <button class="ts-mode-btn" id="mode-btn"><i class="ph ph-moon"></i></button>
+        </div>
+        <div class="ts-section" style="margin-top:0.5rem">
+          <span class="ts-label">Color</span>
+          <div class="ts-colors">
+            <button class="ts-color" data-color="purple" style="background:#8b5cf6"></button>
+            <button class="ts-color" data-color="yellow" style="background:#eab308"></button>
+            <button class="ts-color" data-color="green" style="background:#10b981"></button>
+            <button class="ts-color active" data-color="orange" style="background:#f97316"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLB(event)">
+  <div class="lb-inner">
+    <button class="lb-close" onclick="closeLightbox()"><i class="ph ph-x"></i></button>
+    <img class="lb-img" id="lb-img" src="" alt=""/>
+    <div class="lb-caption" id="lb-caption"></div>
+    <div class="lb-nav">
+      <button onclick="navLB(-1)"><i class="ph ph-arrow-left"></i> Prev</button>
+      <button onclick="navLB(1)">Next <i class="ph ph-arrow-right"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<div class="g-header">
+  <a href="index.html#projects" class="g-back"><i class="ph ph-arrow-left"></i> Back to Portfolio</a>
+  <div class="g-tag">// syncgaze company</div>
+  <h1 class="g-title">SyncGaze <span>Design Projects</span></h1>
+  <p class="g-desc">A collection of professional digital designs created for SyncGaze — India's growing tech brand offering smart digital solutions.</p>
+  <span class="g-count">9 Projects</span>
+</div>
+
+<!-- GALLERY GRID -->
+<div class="g-grid">
+
+  <div class="g-card" onclick="openLightbox(0)">
+    <div class="g-img-wrap">
+      <img src="assets/imgs/syncgaze hospital.jpg" alt="SyncGaze Hospital Package"/>
+      <div class="g-img-overlay"><div class="g-zoom-icon"><i class="ph ph-magnifying-glass-plus"></i></div></div>
+    </div>
+    <div class="g-body">
+      <span class="g-badge">UI Design</span>
+      <div class="g-name">SyncGaze Hospital Package</div>
+      <p class="g-para">A clean promotional poster for SyncGaze's Hospital Package — "Smart Digital Solutions for Hospitals" — highlighting Online Management, Room Allocation, Digital Payments, and a Secure System with a trustworthy blue palette.</p>
+    </div>
+  </div>
+
+  <div class="g-card" onclick="openLightbox(1)">
+    <div class="g-img-wrap">
+      <img src="assets/imgs/syncgaze hiring.jpg" alt="SyncGaze Hiring Campaign"/>
+      <div class="g-img-overlay"><div class="g-zoom-icon"><i class="ph ph-magnifying-glass-plus"></i></div></div>
+    </div>
+    <div class="g-body">
+      <span class="g-badge">Recruitment</span>
+      <div class="g-name">SyncGaze Hiring Campaign</div>
+      <p class="g-para">A bold hiring poster for SyncGaze's part-time sales team. Features high-contrast typography and icon-based role highlights for Web, App &amp; Software Development, promoting 10% commission and work-from-anywhere flexibility.</p>
+    </div>
+  </div>
+
+  <div class="g-card" onclick="openLightbox(2)">
+    <div class="g-img-wrap">
+      <img src="assets/imgs/ad.jpg" alt="SyncGaze Business Email Ad"/>
+      <div class="g-img-overlay"><div class="g-zoom-icon"><i class="ph ph-magnifying-glass-plus"></i></div></div>
+    </div>
+    <div class="g-body">
+      <span class="g-badge">Social Media Ad</span>
+      <div class="g-name">SyncGaze Business Email Ad</div>
+      <p class="g-para">A persuasive comparison-style ad asking "Still using @gmail for your business?" — visually contrasting unprofessional Gmail with branded custom domain email, promoting Custom Domain Email, Enterprise Security, and quick setup.</p>
+    </div>
+  </div>
+
+  <div class="g-card" onclick="openLightbox(3)">
+    <div class="g-img-wrap">
+      <img src="assets/imgs/gzora.jpg" alt="SyncGaze Mail Gzora"/>
+      <div class="g-img-overlay"><div class="g-zoom-icon"><i class="ph ph-magnifying-glass-plus"></i></div></div>
+    </div>
+    <div class="g-body">
+      <span class="g-badge">Product Launch</span>
+      <div class="g-name">SyncGaze Mail — Gzora</div>
+      <p class="g-para">A professional product poster for SyncGaze Mail — "Professional Business Email Made Simple" — showcasing Custom Domain Email, Enterprise Security, and the exclusive gzora.com email service with a sleek, minimal design.</p>
+    </div>
+  </div>
+
+  <div class="g-card" onclick="openLightbox(4)">
+    <div class="g-img-wrap">
+      <img src="assets/imgs/instagram poster glass.png" alt="SyncGaze Holi Poster"/>
+      <div class="g-img-overlay"><div class="g-zoom-icon"><i class="ph ph-magnifying-glass-plus"></i></div></div>
+    </div>
+    <div class="g-body">
+      <span class="g-badge">Festival Creative</span>
+      <div class="g-name">SyncGaze Happy Holi 2026</div>
+      <p class="g-para">A vibrant festive Instagram poster for SyncGaze celebrating Holi 2026 — "Celebrating Colors of Innovation &amp; Unity." Combines bold color splash visuals with a tech-inspired background, blending creativity with brand identity.</p>
+    </div>
+  </div>
+
+  <div class="g-card" onclick="openLightbox(5)">
+    <div class="g-img-wrap">
+      <img src="assets/imgs/live now.jpg" alt="SyncGaze Forms Live"/>
+      <div class="g-img-overlay"><div class="g-zoom-icon"><i class="ph ph-magnifying-glass-plus"></i></div></div>
+    </div>
+    <div class="g-body">
+      <span class="g-badge">Product Announcement</span>
+      <div class="g-name">SyncGaze Forms — Live Now</div>
+      <p class="g-para">A launch announcement poster for SyncGaze Forms — "Smart. Fast. Seamless Data Collection." Highlights Custom Form Builder, Real-Time Responses, and Secure Data Collection with a clean, icon-driven layout and strong CTA.</p>
+    </div>
+  </div>
+
+  <div class="g-card" onclick="openLightbox(6)">
+    <div class="g-img-wrap">
+      <img src="assets/imgs/summer internship.jpg" alt="SyncGaze Internship"/>
+      <div class="g-img-overlay"><div class="g-zoom-icon"><i class="ph ph-magnifying-glass-plus"></i></div></div>
+    </div>
+    <div class="g-body">
+      <span class="g-badge">Internship Drive</span>
+      <div class="g-name">SyncGaze Summer Internship</div>
+      <p class="g-para">A professional internship recruitment poster for SyncGaze inviting students to join their summer program — emphasizing skill enhancement and career growth with a bold typographic layout and motivational team imagery.</p>
+    </div>
+  </div>
+
+  <div class="g-card" onclick="openLightbox(7)">
+    <div class="g-img-wrap">
+      <img src="assets/imgs/syncGaze letter.jpg" alt="SyncGaze Launching Soon"/>
+      <div class="g-img-overlay"><div class="g-zoom-icon"><i class="ph ph-magnifying-glass-plus"></i></div></div>
+    </div>
+    <div class="g-body">
+      <span class="g-badge">Teaser Campaign</span>
+      <div class="g-name">SyncGaze — Launching Soon</div>
+      <p class="g-para">A stunning teaser poster for SyncGaze's upcoming communication platform — "The Future Begins, Launching Soon. A smarter way to communicate." Features a glowing cloud-upload visual and a sleek email UI interface mockup.</p>
+    </div>
+  </div>
+
+  <div class="g-card" onclick="openLightbox(8)">
+    <div class="g-img-wrap">
+      <img src="assets/imgs/forms syncgaze launching soon.jpg" alt="SyncGaze Forms Coming Soon"/>
+      <div class="g-img-overlay"><div class="g-zoom-icon"><i class="ph ph-magnifying-glass-plus"></i></div></div>
+    </div>
+    <div class="g-body">
+      <span class="g-badge">Coming Soon</span>
+      <div class="g-name">SyncGaze Forms — Coming Soon</div>
+      <p class="g-para">A pre-launch teaser design for SyncGaze Forms, building anticipation with a clean, minimal layout that teases the platform's smart form-building capabilities to the audience before the official release.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Designed &amp; Built with <i class="ph-fill ph-heart-fill" style="color:#ec4899;vertical-align:middle"></i> by <span>Althaf</span> · Graphic Designer © 2025</p>
+</footer>
+
+<script>
+  // CURSOR
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  let mx=0, my=0, rx=0, ry=0;
+  document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cursor.style.left=mx-6+'px'; cursor.style.top=my-6+'px'; });
+  function animateRing(){rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12; ring.style.left=rx-18+'px'; ring.style.top=ry-18+'px'; requestAnimationFrame(animateRing);}
+  animateRing();
+  document.querySelectorAll('a,button,.g-card,.lb-nav button').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cursor.style.transform='scale(2)';ring.style.transform='scale(1.5)';ring.style.borderColor='rgba(139,92,246,0.8)';});
+    el.addEventListener('mouseleave',()=>{cursor.style.transform='scale(1)';ring.style.transform='scale(1)';ring.style.borderColor='rgba(139,92,246,0.5)';});
+  });
+
+  // NAVBAR SCROLL
+  window.addEventListener('scroll',()=>{
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY>50);
+  });
+
+  // THEME SWITCHER (same logic as main portfolio)
+  const tsToggle = document.getElementById('ts-toggle');
+  const tsPanel = document.getElementById('ts-panel');
+  const modeBtn = document.getElementById('mode-btn');
+  const tsColors = document.querySelectorAll('.ts-color');
+  const htmlEl = document.documentElement;
+
+  tsToggle.addEventListener('click', () => tsPanel.classList.toggle('active'));
+  document.addEventListener('click', (e) => {
+    if(!tsToggle.contains(e.target) && !tsPanel.contains(e.target)) tsPanel.classList.remove('active');
+  });
+  modeBtn.addEventListener('click', () => {
+    if (htmlEl.getAttribute('data-theme') === 'dark') {
+      htmlEl.removeAttribute('data-theme');
+      modeBtn.innerHTML = '<i class="ph ph-moon"></i>';
+      localStorage.setItem('theme', 'light');
+    } else {
+      htmlEl.setAttribute('data-theme', 'dark');
+      modeBtn.innerHTML = '<i class="ph ph-sun"></i>';
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+  tsColors.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tsColors.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const color = btn.getAttribute('data-color');
+      if (color === 'orange') { htmlEl.removeAttribute('data-color'); } else { htmlEl.setAttribute('data-color', color); }
+      localStorage.setItem('color', color);
+    });
+  });
+
+  // LOAD SAVED PREFERENCES
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') { htmlEl.setAttribute('data-theme', 'dark'); modeBtn.innerHTML = '<i class="ph ph-sun"></i>'; }
+  const savedColor = localStorage.getItem('color');
+  if (savedColor && savedColor !== 'orange') {
+    htmlEl.setAttribute('data-color', savedColor);
+    tsColors.forEach(b => { b.classList.remove('active'); if (b.getAttribute('data-color') === savedColor) b.classList.add('active'); });
+  }
+
+  // LIGHTBOX
+  const images = [
+    { src: 'assets/imgs/syncgaze hospital.jpg', caption: 'SyncGaze Hospital Package' },
+    { src: 'assets/imgs/syncgaze hiring.jpg', caption: 'SyncGaze Hiring Campaign' },
+    { src: 'assets/imgs/ad.jpg', caption: 'SyncGaze Business Email Ad' },
+    { src: 'assets/imgs/gzora.jpg', caption: 'SyncGaze Mail — Gzora' },
+    { src: 'assets/imgs/instagram poster glass.png', caption: 'SyncGaze Happy Holi 2026' },
+    { src: 'assets/imgs/live now.jpg', caption: 'SyncGaze Forms — Live Now' },
+    { src: 'assets/imgs/summer internship.jpg', caption: 'SyncGaze Summer Internship' },
+    { src: 'assets/imgs/syncGaze letter.jpg', caption: 'SyncGaze — Launching Soon' },
+    { src: 'assets/imgs/forms syncgaze launching soon.jpg', caption: 'SyncGaze Forms — Coming Soon' },
+  ];
+  let current = 0;
+
+  function openLightbox(idx) {
+    current = idx;
+    document.getElementById('lb-img').src = images[idx].src;
+    document.getElementById('lb-caption').textContent = images[idx].caption;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  function closeLB(e) { if (e.target === document.getElementById('lightbox')) closeLightbox(); }
+  function navLB(dir) {
+    current = (current + dir + images.length) % images.length;
+    document.getElementById('lb-img').src = images[current].src;
+    document.getElementById('lb-caption').textContent = images[current].caption;
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') navLB(1);
+    if (e.key === 'ArrowLeft') navLB(-1);
+  });
+</script>
+</body>
+</html>
